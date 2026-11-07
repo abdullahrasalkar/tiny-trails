@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cglwbej26akw6" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://xp8mxujx7b64" path="res://assets/environment/tile set -001.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://badlrkw8s5j2r" path="res://assets/environment/Grass-Platforms-001.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bmp5hya0ipvs" path="res://assets/Hazards/Thorns-001.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://jbus5alnwanu" path="res://thorns.gd" id="4_lquwl"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cdr67"]
 size = Vector2(16, 16)
@@ -11,6 +14,23 @@ size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq1ta"]
 size = Vector2(449, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u67dh"]
+size = Vector2(192, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04d80"]
+size = Vector2(32, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+texture = ExtResource("2_h2yge")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(32, 16)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -27,6 +47,10 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_mq1ta"]
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_h2yge")
+sources/0 = SubResource("TileSetAtlasSource_1bvp3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykghe"]
+size = Vector2(32, 12)
 
 [node name="Main" type="Node2D" unique_id=2140424093]
 
@@ -46,6 +70,11 @@ texture = SubResource("PlaceholderTexture2D_cdr67")
 position = Vector2(8, 148)
 shape = SubResource("RectangleShape2D_cdr67")
 
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=1021635128]
+offset = Vector2(0, 100)
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+
 [node name="Ground" type="StaticBody2D" parent="." unique_id=171785974]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1301732181]
@@ -55,7 +84,49 @@ shape = SubResource("RectangleShape2D_mq1ta")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground" unique_id=1450546972]
 polygon = PackedVector2Array(417, 192, 481, 256, 640, 256, 672, 224, 768, 224, 864, 128, 864, 288, 417, 288)
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground" unique_id=1736667009]
+position = Vector2(224, 144)
+shape = SubResource("RectangleShape2D_u67dh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground" unique_id=574734427]
+position = Vector2(368, 112)
+shape = SubResource("RectangleShape2D_04d80")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Ground" unique_id=50784128]
+position = Vector2(752, 176)
+shape = SubResource("RectangleShape2D_04d80")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground" unique_id=1081552447]
+position = Vector2(688, 112)
+shape = SubResource("RectangleShape2D_04d80")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground" unique_id=621805016]
+position = Vector2(592, 112)
+shape = SubResource("RectangleShape2D_04d80")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ground" unique_id=901014564]
+position = Vector2(528, 80)
+shape = SubResource("RectangleShape2D_04d80")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground" unique_id=1194560519]
+position = Vector2(432, 80)
+shape = SubResource("RectangleShape2D_04d80")
+
 [node name="environment" type="TileMap" parent="." unique_id=1175878072]
 tile_set = SubResource("TileSet_mq1ta")
 format = 2
-layer_0/tile_data = PackedInt32Array(458751, 65537, 0, 393216, 65537, 0, 393217, 65537, 0, 393218, 65537, 0, 393219, 65537, 0, 393220, 65537, 0, 393221, 65537, 0, 393222, 65537, 0, 393223, 65537, 0, 393224, 65537, 0, 393225, 65537, 0, 393226, 65537, 0, 393227, 65537, 0, 393228, 65537, 0, 393229, 131073, 0, 458766, 131073, 0, 458765, 131073, 1, 524303, 65537, 0, 524304, 65537, 0, 524305, 65537, 0, 524306, 65537, 0, 524307, 65537, 0, 458772, 1, 0, 458773, 65537, 0, 458774, 65537, 0, 458775, 65537, 0, 393240, 1, 0, 327705, 1, 0, 262170, 1, 0, 327706, 1, 1, 393241, 1, 1, 458776, 1, 1, 524308, 1, 1, 524302, 131073, 1, 524287, 65537, 1, 458752, 65537, 1, 524288, 65537, 1, 589823, 65537, 1, 524289, 65537, 1, 458753, 65537, 1, 524290, 65537, 1, 458754, 65537, 1, 524291, 65537, 1, 458755, 65537, 1, 524292, 65537, 1, 458756, 65537, 1, 524293, 65537, 1, 458757, 65537, 1, 524294, 65537, 1, 458758, 65537, 1, 458759, 65537, 1, 458760, 65537, 1, 458761, 65537, 1, 458762, 65537, 1, 458763, 65537, 1, 458764, 65537, 1, 524300, 65537, 1, 524301, 65537, 1, 524299, 65537, 1, 524298, 65537, 1, 524297, 65537, 1, 524296, 65537, 1, 524295, 65537, 1, 393242, 65537, 1, 458778, 65537, 1, 524314, 65537, 1, 524313, 65537, 1, 524312, 65537, 1, 524311, 65537, 1, 524310, 65537, 1, 524309, 65537, 1, 458777, 65537, 1)
+layer_0/tile_data = PackedInt32Array(458751, 65537, 0, 393216, 65537, 0, 393217, 65537, 0, 393218, 65537, 0, 393219, 65537, 0, 393220, 65537, 0, 393221, 65537, 0, 393222, 65537, 0, 393223, 65537, 0, 393224, 65537, 0, 393225, 65537, 0, 393226, 65537, 0, 393227, 65537, 0, 393228, 65537, 0, 458773, 65537, 0, 458774, 65537, 0, 458775, 65537, 0, 393240, 1, 0, 327705, 1, 0, 262170, 1, 0, 327706, 1, 1, 393241, 1, 1, 458776, 1, 1, 524287, 65537, 1, 458752, 65537, 1, 524288, 65537, 1, 589823, 65537, 1, 524289, 65537, 1, 458753, 65537, 1, 524290, 65537, 1, 458754, 65537, 1, 524291, 65537, 1, 458755, 65537, 1, 524292, 65537, 1, 458756, 65537, 1, 524293, 65537, 1, 458757, 65537, 1, 524294, 65537, 1, 458758, 65537, 1, 458759, 65537, 1, 458760, 65537, 1, 458761, 65537, 1, 458762, 65537, 1, 458763, 65537, 1, 458764, 65537, 1, 524300, 65537, 1, 524299, 65537, 1, 524298, 65537, 1, 524297, 65537, 1, 524296, 65537, 1, 524295, 65537, 1, 393242, 65537, 1, 458778, 65537, 1, 524314, 65537, 1, 524313, 65537, 1, 524312, 65537, 1, 524311, 65537, 1, 524310, 65537, 1, 524309, 65537, 1, 458777, 65537, 1, 262148, 0, 0, 262149, 65536, 0, 262150, 65536, 0, 262151, 65536, 0, 262152, 65536, 0, 262153, 131072, 0, 393229, 131073, 0, 458765, 131073, 1, 524301, 65537, 1, 458766, 131073, 0, 524302, 131073, 1, 524303, 65537, 0, 524304, 65537, 0, 524305, 65537, 0, 524306, 65537, 0, 524307, 65537, 0, 458772, 1, 0, 524308, 1, 1, 196619, 65536, 1, 131085, 65536, 1, 131088, 65536, 1, 196626, 65536, 1, 196629, 65536, 1, 327703, 65536, 1)
+
+[node name="Hazards" type="Node2D" parent="." unique_id=978106813]
+
+[node name="thorns" type="Area2D" parent="Hazards" unique_id=720212056]
+position = Vector2(75, 155)
+script = ExtResource("4_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hazards/thorns" unique_id=383512853]
+position = Vector2(36, 21)
+texture = ExtResource("4_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/thorns" unique_id=1957189238]
+position = Vector2(36, 27)
+shape = SubResource("RectangleShape2D_ykghe")
