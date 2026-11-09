@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://bji2ypqjxb4p4"]
 
-[ext_resource type="Texture2D" uid="uid://badlrkw8s5j2r" path="res://assets/environment/Grass-Platforms-001.png" id="1_mi635"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v4t87"]
+load_path = "res://.godot/imported/plaform-indivisual-001.png-7b65bfb180660a5ddea33ea1277635bd.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdr67"]
-size = Vector2(32, 16)
+size = Vector2(48, 16)
 
 [node name="platform" type="AnimatableBody2D" unique_id=1426052692]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795759195]
-texture = ExtResource("1_mi635")
+position = Vector2(0, -8)
+texture = SubResource("CompressedTexture2D_v4t87")
 region_enabled = true
-region_rect = Rect2(33.541233, 17.813047, 32.74882, 16.186953)
+region_rect = Rect2(0, 0, 48, 16.186953)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707341864]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cdr67")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bw2krp5iokf8c"]
+
+[ext_resource type="Texture2D" uid="uid://bmp5hya0ipvs" path="res://assets/Hazards/Thorns-001.png" id="1_1iqhf"]
+[ext_resource type="PackedScene" uid="uid://cydxix40cksd8" path="res://scenes/killzone.tscn" id="2_sn5tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdr67"]
+size = Vector2(32, 16)
+
+[node name="thorns" type="Node2D" unique_id=1168730669]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018533981]
+position = Vector2(0, -16)
+texture = ExtResource("1_1iqhf")
+
+[node name="killzone" parent="Sprite2D" unique_id=1542409386 instance=ExtResource("2_sn5tw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/killzone" unique_id=398784341]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_cdr67")
