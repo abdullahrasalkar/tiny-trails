@@ -17,3 +17,4 @@ region_rect = Rect2(0, 0, 48, 16.186953)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707341864]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cdr67")
+one_way_collision = true

@@ -21,7 +21,7 @@ texture = ExtResource("1_4flbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2147348509]
 position = Vector2(0, -8)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 limit_left = -190
 limit_bottom = 450
 limit_smoothed = true

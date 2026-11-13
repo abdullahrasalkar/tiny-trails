@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed: float = 200.0
-var jump_velocity = -400.0
+var jump_velocity = -450.0
 var gravity: float = 980.0
 var fall_speed: float = 600.0
 
